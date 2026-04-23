@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "skills": {
+    "flutter": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "09acbc34217636a5c4d78321cd483338370d2c905f6bbd45e656e2b85cac60fb"
+    },
+    "flutter-riverpod-expert": {
+      "source": "juparave/dotfiles",
+      "sourceType": "github",
+      "computedHash": "1b81c426cb1e7d2a369d4e0a08f5eebf7b67a1b342a0d5ec52d641b8536bfdc6"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
+    }
+  }
+}

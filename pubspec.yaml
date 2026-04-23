@@ -1,0 +1,24 @@
+name: smart_insole_gait_app
+description: Smart insole gait analysis app built with Flutter and Riverpod.
+publish_to: "none"
+
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  fl_chart: ^0.68.0
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  shared_preferences: ^2.2.3
+  web_socket_channel: ^3.0.1
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
