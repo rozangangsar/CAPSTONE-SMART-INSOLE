@@ -75,8 +75,9 @@ Targets:
 
 ## Android notes
 
-- Emulator id: `Pixel_8_API_36`
+- Emulator id: `Pixel_8_API_36_clean`
 - Device id after boot: `emulator-5554`
+- Default GPU mode: `swiftshader_indirect`
 - If the emulator is already open:
   ```powershell
   .\run-android.ps1 -NoLaunch
@@ -84,6 +85,10 @@ Targets:
 - If you want a clean rebuild:
   ```powershell
   .\run-android.ps1 -Clean
+  ```
+- If you want to override the emulator or GPU mode:
+  ```powershell
+  .\run-android.ps1 -EmulatorId Pixel_8_API_36_clean -GpuMode swiftshader_indirect
   ```
 
 ## Web notes
