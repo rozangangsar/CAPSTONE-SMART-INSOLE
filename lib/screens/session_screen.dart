@@ -162,25 +162,43 @@ class _SessionScreenState extends ConsumerState<SessionScreen> {
                             ),
                       ),
                       const SizedBox(height: 14),
-                      Wrap(
-                        spacing: 12,
-                        runSpacing: 12,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _LivePreviewCard(
-                            label: 'Stance Phase',
-                            value: '${latest.features.stancePhase.toStringAsFixed(1)} %',
+                          Expanded(
+                            child: Column(
+                              children: [
+                                _LivePreviewCard(
+                                  label: 'Stance Phase',
+                                  value: '${latest.features.stancePhase.toStringAsFixed(1)} %',
+                                  width: double.infinity,
+                                ),
+                                const SizedBox(height: 12),
+                                _LivePreviewCard(
+                                  label: 'Velocity',
+                                  value: '${latest.features.gaitVelocity.toStringAsFixed(2)} m/s',
+                                  width: double.infinity,
+                                ),
+                              ],
+                            ),
                           ),
-                          _LivePreviewCard(
-                            label: 'Velocity',
-                            value: '${latest.features.gaitVelocity.toStringAsFixed(2)} m/s',
-                          ),
-                          _LivePreviewCard(
-                            label: 'Step Length',
-                            value: '${latest.features.stepLength.toStringAsFixed(2)} m',
-                          ),
-                          _LivePreviewCard(
-                            label: 'Stride Length',
-                            value: '${latest.features.strideLength.toStringAsFixed(2)} m',
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                _LivePreviewCard(
+                                  label: 'Step Length',
+                                  value: '${latest.features.stepLength.toStringAsFixed(2)} m',
+                                  width: double.infinity,
+                                ),
+                                const SizedBox(height: 12),
+                                _LivePreviewCard(
+                                  label: 'Stride Length',
+                                  value: '${latest.features.strideLength.toStringAsFixed(2)} m',
+                                  width: double.infinity,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -197,15 +215,17 @@ class _LivePreviewCard extends StatelessWidget {
   const _LivePreviewCard({
     required this.label,
     required this.value,
+    this.width = 150,
   });
 
   final String label;
   final String value;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
+      width: width,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: const Color(0xFFF5F7FC),

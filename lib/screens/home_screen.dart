@@ -147,58 +147,100 @@ class _FeatureGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final features = <MapEntry<String, String>>[
-      MapEntry('Stance Phase', '${data.features.stancePhase.toStringAsFixed(1)} %'),
-      MapEntry('Gait Velocity', '${data.features.gaitVelocity.toStringAsFixed(2)} m/s'),
-      MapEntry('Step Length', '${data.features.stepLength.toStringAsFixed(2)} m'),
-      MapEntry(
-        'Double Support',
-        '${data.features.doubleSupportTime.toStringAsFixed(2)} s',
-      ),
-      MapEntry('Stride Length', '${data.features.strideLength.toStringAsFixed(2)} m'),
-      MapEntry(
-        'Step Frequency',
-        '${data.features.stepFrequency.toStringAsFixed(1)} steps/min',
-      ),
-      MapEntry('Symmetry Index', '${data.features.symmetryIndex.toStringAsFixed(1)} %'),
-    ];
-
-    return Wrap(
-      spacing: 12,
-      runSpacing: 12,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (final feature in features)
-          Container(
-            width: 168,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: const Color(0xFF1A237E).withValues(alpha: 0.08),
+        Expanded(
+          child: Column(
+            children: [
+              _FeatureItem(
+                label: 'Stance Phase',
+                value: '${data.features.stancePhase.toStringAsFixed(1)} %',
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  feature.key,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: const Color(0xFF55658D),
-                        fontWeight: FontWeight.w700,
-                      ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  feature.value,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
-                ),
-              ],
-            ),
+              const SizedBox(height: 12),
+              _FeatureItem(
+                label: 'Gait Velocity',
+                value: '${data.features.gaitVelocity.toStringAsFixed(2)} m/s',
+              ),
+              const SizedBox(height: 12),
+              _FeatureItem(
+                label: 'Step Length',
+                value: '${data.features.stepLength.toStringAsFixed(2)} m',
+              ),
+              const SizedBox(height: 12),
+              _FeatureItem(
+                label: 'Double Support',
+                value: '${data.features.doubleSupportTime.toStringAsFixed(2)} s',
+              ),
+            ],
           ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            children: [
+              _FeatureItem(
+                label: 'Stride Length',
+                value: '${data.features.strideLength.toStringAsFixed(2)} m',
+              ),
+              const SizedBox(height: 12),
+              _FeatureItem(
+                label: 'Step Frequency',
+                value: '${data.features.stepFrequency.toStringAsFixed(1)} steps/min',
+              ),
+              const SizedBox(height: 12),
+              _FeatureItem(
+                label: 'Symmetry Index',
+                value: '${data.features.symmetryIndex.toStringAsFixed(1)} %',
+              ),
+            ],
+          ),
+        ),
       ],
+    );
+  }
+}
+
+class _FeatureItem extends StatelessWidget {
+  const _FeatureItem({
+    required this.label,
+    required this.value,
+  });
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: const Color(0xFF1A237E).withValues(alpha: 0.08),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: const Color(0xFF55658D),
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            value,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+          ),
+        ],
+      ),
     );
   }
 }
